@@ -11,7 +11,7 @@ dynamic = ["version"]  # Let hatchling handle version
 description = "Verifiers for reinforcement learning with LLMs"
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.11,<3.13"
+requires-python = ">=3.10"
 keywords = ["reinforcement-learning", "llm", "rl", "grpo", "verifiable-environments", "multi-turn"]
 classifiers = [
     "Development Status :: 4 - Beta",
