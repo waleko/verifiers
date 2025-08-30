@@ -6,26 +6,17 @@ import sys
 from typing import TYPE_CHECKING, Optional
 
 from .types import *  # noqa # isort: skip
-from .envs.env_group import EnvGroup
-from .envs.environment import Environment
-from .envs.multiturn_env import MultiTurnEnv
-from .envs.singleturn_env import SingleTurnEnv
-from .envs.tool_env import ToolEnv
 from .parsers.parser import Parser
 from .parsers.think_parser import ThinkParser
 from .parsers.xml_parser import XMLParser
 from .rubrics.judge_rubric import JudgeRubric
 from .rubrics.rubric import Rubric
 from .rubrics.rubric_group import RubricGroup
-from .rubrics.tool_rubric import ToolRubric
 from .utils.data_utils import (
     extract_boxed_answer,
     extract_hash_answer,
     load_example_dataset,
 )
-from .utils.env_utils import load_environment
-from .utils.logging_utils import print_prompt_completions_sample
-
 
 # Setup default logging configuration
 def setup_logging(
@@ -68,25 +59,10 @@ __all__ = [
     "Rubric",
     "JudgeRubric",
     "RubricGroup",
-    "ToolRubric",
-    "Environment",
-    "MultiTurnEnv",
-    "SingleTurnEnv",
-    "ToolEnv",
-    "EnvGroup",
     "extract_boxed_answer",
     "extract_hash_answer",
     "load_example_dataset",
     "setup_logging",
-    "load_environment",
-    "print_prompt_completions_sample",
-    "get_model",
-    "get_tokenizer",
-    "get_model_and_tokenizer",
-    "GRPOTrainer",
-    "GRPOConfig",
-    "grpo_defaults",
-    "lora_defaults",
 ]
 
 _LAZY_IMPORTS = {
@@ -111,17 +87,3 @@ def __getattr__(name: str):
         raise AttributeError(
             f"To use verifiers.{name}, install as `verifiers[all]`. "
         ) from e
-
-
-if TYPE_CHECKING:
-    from .trainers import (  # noqa: F401
-        GRPOConfig,
-        GRPOTrainer,
-        grpo_defaults,
-        lora_defaults,
-    )
-    from .utils.model_utils import (  # noqa: F401
-        get_model,
-        get_model_and_tokenizer,
-        get_tokenizer,
-    )
